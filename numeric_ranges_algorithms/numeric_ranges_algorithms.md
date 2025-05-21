@@ -530,7 +530,8 @@ TODO
   template<@_execution-policy_@ ExecutionPolicy,
            random_access_iterator I,
            sized_sentinel_for<I> S,
-           output_iterator<iter_value_t<I>> O,
+           random_access_iterator O,
+           sized_sentinel_for<O> OutS,
            class T,
            class Proj = identity,
            @_indirectly-binary-foldable_@<T, projected<I, Proj>> F>
