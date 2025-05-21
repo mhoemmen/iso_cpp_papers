@@ -443,9 +443,117 @@ TODO: Check that using `projected<I, Proj>` instead of `I` in _`indirectly-binar
 
 ### Add declarations of parallel ranges `inclusive_scan`
 
+> Add declarations of ranges overloads of `inclusive_scan` algorithms to [numeric.ops.overview] (the `<numeric>` header synopsis) as follows.
+
+```
+::: add
+```
+  namespace ranges {
+
+  // Non-parallel overloads of inclusive_scan
+
+  template<random_access_iterator I,
+           sized_sentinel_for<I> S,
+           output_iterator<iter_value_t<I>> O,
+           class T,
+           class Proj = identity,
+           @_indirectly-binary-foldable_@<T, projected<I, Proj>> F>
+      constexpr auto inclusive_scan(I first, S last, O o_first, T init, F binary_op,
+                            Proj proj = {}) -> /* @_see below_@ */;
+  template<random_access_iterator I,
+           @_sized-random-access-range_@ R,
+           @_sized-random-access-range_@ O,
+           class Proj = identity,
+           @_indirectly-binary-foldable_@<T, projected<ranges::iterator_t<R>, Proj>> F>
+      constexpr auto inclusive_scan(R&& r, O&& o, T init, F binary_op,
+                            Proj proj = {}) -> /* @_see below_@ */;
+
+  // Parallel overloads of inclusive_scan
+
+  template<@_execution-policy_@ ExecutionPolicy,
+           random_access_iterator I,
+           sized_sentinel_for<I> S,
+           output_iterator<iter_value_t<I>> O,
+           class T,
+           class Proj = identity,
+           @_indirectly-binary-foldable_@<T, projected<I, Proj>> F>
+      auto inclusive_scan(ExecutionPolicy&& exec, // @_freestanding-deleted, see [algorithms.parallel.overloads]_@
+                  I first, S last, O o_first, T init, F binary_op,  
+                  Proj proj = {}) -> /* @_see below_@ */;
+  template<@_execution-policy_@ ExecutionPolicy,
+           @_sized-random-access-range_@ R,
+           @_sized-random-access-range_@ O,
+           class T,
+           class Proj = identity,
+           @_indirectly-binary-foldable_@<T, projected<ranges::iterator_t<R>, Proj>> F>
+      auto inclusive_scan(ExecutionPolicy&& exec, // @_freestanding-deleted, see [algorithms.parallel.overloads]_@
+                  R&& r, O&& o, T init, F binary_op,
+                  Proj proj = {}) -> /* @_see below_@ */;
+
+  } // namespace ranges
+```
+:::
+```
+
+```
+
 TODO
 
 ### Add declarations of parallel ranges `exclusive_scan`
+
+> Add declarations of ranges overloads of `exclusive_scan` algorithms to [numeric.ops.overview] (the `<numeric>` header synopsis) as follows.
+
+```
+::: add
+```
+  namespace ranges {
+
+  // Non-parallel overloads of exclusive_scan
+
+  template<random_access_iterator I,
+           sized_sentinel_for<I> S,
+           output_iterator<iter_value_t<I>> O,
+           class T,
+           class Proj = identity,
+           @_indirectly-binary-foldable_@<T, projected<I, Proj>> F>
+      constexpr auto exclusive_scan(I first, S last, O o_first, T init, F binary_op,
+                            Proj proj = {}) -> /* @_see below_@ */;
+  template<random_access_iterator I,
+           @_sized-random-access-range_@ R,
+           @_sized-random-access-range_@ O,
+           class Proj = identity,
+           @_indirectly-binary-foldable_@<T, projected<ranges::iterator_t<R>, Proj>> F>
+      constexpr auto exclusive_scan(R&& r, O&& o, T init, F binary_op,
+                            Proj proj = {}) -> /* @_see below_@ */;
+
+  // Parallel overloads of exclusive_scan
+
+  template<@_execution-policy_@ ExecutionPolicy,
+           random_access_iterator I,
+           sized_sentinel_for<I> S,
+           output_iterator<iter_value_t<I>> O,
+           class T,
+           class Proj = identity,
+           @_indirectly-binary-foldable_@<T, projected<I, Proj>> F>
+      auto exclusive_scan(ExecutionPolicy&& exec, // @_freestanding-deleted, see [algorithms.parallel.overloads]_@
+                  I first, S last, O o_first, T init, F binary_op,  
+                  Proj proj = {}) -> /* @_see below_@ */;
+  template<@_execution-policy_@ ExecutionPolicy,
+           @_sized-random-access-range_@ R,
+           @_sized-random-access-range_@ O,
+           class T,
+           class Proj = identity,
+           @_indirectly-binary-foldable_@<T, projected<ranges::iterator_t<R>, Proj>> F>
+      auto exclusive_scan(ExecutionPolicy&& exec, // @_freestanding-deleted, see [algorithms.parallel.overloads]_@
+                  R&& r, O&& o, T init, F binary_op,
+                  Proj proj = {}) -> /* @_see below_@ */;
+
+  } // namespace ranges
+```
+:::
+```
+
+```
 
 TODO
 
