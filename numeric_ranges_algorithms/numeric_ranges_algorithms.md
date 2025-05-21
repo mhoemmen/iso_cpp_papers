@@ -518,8 +518,7 @@ TODO
            @_indirectly-binary-foldable_@<T, projected<I, Proj>> F>
       constexpr auto exclusive_scan(I first, S last, O o_first, T init, F binary_op,
                             Proj proj = {}) -> /* @_see below_@ */;
-  template<random_access_iterator I,
-           @_sized-random-access-range_@ R,
+  template<@_sized-random-access-range_@ R,
            @_sized-random-access-range_@ O,
            class Proj = identity,
            @_indirectly-binary-foldable_@<T, projected<ranges::iterator_t<R>, Proj>> F>
