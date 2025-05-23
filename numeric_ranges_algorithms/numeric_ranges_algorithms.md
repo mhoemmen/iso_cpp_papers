@@ -451,10 +451,10 @@ TODO: Check that using `projected<I, Proj>` instead of `I` in _`indirectly-binar
   namespace ranges {
 
   // Non-parallel overloads of inclusive_scan
-  template<random_access_iterator I, 
+  template<input_iterator I, 
            output_iterator<iter_value_t<I>> O>
       using inclusive_scan_result = in_out_result<I, O>; 
-  template<random_access_iterator I,
+  template<input_iterator I,
            sized_sentinel_for<I> S,
            output_iterator<iter_value_t<I>> O,
            class T,
@@ -511,10 +511,10 @@ TODO
 
   // Non-parallel overloads of exclusive_scan
 
-  template<random_access_iterator I, 
+  template<input_iterator I, 
            output_iterator<iter_value_t<I>> O>
       using exclusive_scan_result = in_out_result<I, O>; 
-  template<random_access_iterator I,
+  template<input_iterator I,
            sized_sentinel_for<I> S,
            output_iterator<iter_value_t<I>> O,
            class T,
