@@ -451,8 +451,7 @@ TODO: Check that using `projected<I, Proj>` instead of `I` in _`indirectly-binar
   namespace ranges {
 
   // Non-parallel overloads of inclusive_scan
-  template<input_iterator I, 
-           output_iterator<iter_value_t<I>> O>
+  template<class I, class O>
       using inclusive_scan_result = in_out_result<I, O>; 
   template<input_iterator I,
            sized_sentinel_for<I> S,
@@ -512,8 +511,7 @@ TODO
 
   // Non-parallel overloads of exclusive_scan
 
-  template<input_iterator I, 
-           output_iterator<iter_value_t<I>> O>
+  template<class I, class O>
       using exclusive_scan_result = in_out_result<I, O>; 
   template<input_iterator I,
            sized_sentinel_for<I> S,
@@ -541,7 +539,7 @@ TODO
            class Proj = identity,
            @_indirectly-binary-foldable_@<T, projected<I, Proj>> F>
       auto exclusive_scan(ExecutionPolicy&& exec, // @_freestanding-deleted, see [algorithms.parallel.overloads]_@
-                  I first, S last, O o_first, T init, F binary_op,  
+                  I first, S last, OutS result_last, T init, F binary_op,  
                   Proj proj = {}) -> /* @_see below_@ */;
   template<@_execution-policy_@ ExecutionPolicy,
            @_sized-random-access-range_@ R,
