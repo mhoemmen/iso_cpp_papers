@@ -474,7 +474,8 @@ TODO: Check that using `projected<I, Proj>` instead of `I` in _`indirectly-binar
   template<@_execution-policy_@ ExecutionPolicy,
            random_access_iterator I,
            sized_sentinel_for<I> S,
-           output_iterator<iter_value_t<I>> O,
+           random_access_iterator<iter_value_t<I>> O,
+           sized_sentinel_for<O> OutS,
            class T,
            class Proj = identity,
            @_indirectly-binary-foldable_@<T, projected<I, Proj>> F>
