@@ -480,7 +480,7 @@ TODO: Check that using `projected<I, Proj>` instead of `I` in _`indirectly-binar
            class Proj = identity,
            @_indirectly-binary-foldable_@<T, projected<I, Proj>> F>
       auto inclusive_scan(ExecutionPolicy&& exec, // @_freestanding-deleted, see [algorithms.parallel.overloads]_@
-                  I first, S last, O o_first, T init, F binary_op,  
+                  I first, S last, O result, OutS result_last, T init, F binary_op,  
                   Proj proj = {}) -> /* @_see below_@ */;
   template<@_execution-policy_@ ExecutionPolicy,
            @_sized-random-access-range_@ R,
